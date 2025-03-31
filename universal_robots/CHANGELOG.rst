@@ -2,8 +2,8 @@
 Changelog for package universal_robots
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.4.0 (2025-03-31)
+------------------
 * Add moveit configs for ur7e and ur12e to metapackage (`#693 <https://github.com/ros-industrial/universal_robot/issues/693>`_)
 * Contributors: Felix Exner
 

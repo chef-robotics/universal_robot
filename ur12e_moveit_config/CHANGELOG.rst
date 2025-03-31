@@ -2,8 +2,8 @@
 Changelog for package ur12e_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.4.0 (2025-03-31)
+------------------
 * Add support for ur7e and ur12e (`#692 <https://github.com/ros-industrial/universal_robot/issues/692>`_)
 * Contributors: Felix Exner
 

@@ -2,8 +2,8 @@
 Changelog for package ur_gazebo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.4.0 (2025-03-31)
+------------------
 * Add support for ur7e and ur12e (`#692 <https://github.com/ros-industrial/universal_robot/issues/692>`_)
 * [ur_gazebo] Add possibility to specify transmission_interface and position-controllers (`#685 <https://github.com/ros-industrial/universal_robot/issues/685>`_)
 * Set initial joint at launch gazebo (`#681 <https://github.com/ros-industrial/universal_robot/issues/681>`_)

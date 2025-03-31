@@ -2,8 +2,8 @@
 Changelog for package ur_description
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.4.0 (2025-03-31)
+------------------
 * Add support for ur7e and ur12e (`#692 <https://github.com/ros-industrial/universal_robot/issues/692>`_)
 * Fix masses of robot links (`#689 <https://github.com/ros-industrial/universal_robot/issues/689>`_)
 * Fix UR3 mesh positing. (`#691 <https://github.com/ros-industrial/universal_robot/issues/691>`_)
