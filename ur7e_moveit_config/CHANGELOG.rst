@@ -1,14 +1,14 @@
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Changelog for package ur30_moveit_config
+Changelog for package ur7e_moveit_config
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Forthcoming
 -----------
+* Add support for ur7e and ur12e (`#692 <https://github.com/ros-industrial/universal_robot/issues/692>`_)
+* Contributors: Felix Exner
 
 1.3.3 (2024-04-08)
 ------------------
-* UR30 description and meshes (`#674 <https://github.com/ros-industrial/universal_robot/issues/674>`_)
-* Contributors: Vincenzo Di Pentima
 
 1.3.2 (2023-12-18)
 ------------------
