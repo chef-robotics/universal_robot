@@ -75,11 +75,17 @@
     <!-- Add URDF transmission elements (for ros_control) -->
     <xacro:ur_arm_transmission prefix="${prefix}" hw_interface="${transmission_hw_interface}" />
 
+    <!--
+      This is for compatibility reasons, as transformation between base and
+      base_link was always 180 degree in the ur_description.
+    -->
+    <!-- TODO(cj): See if we can remove this in favor of the new base_link_inertia link. -->
+    <xacro:property name="base_correction" value="${pi}" />
+
     <!-- links: main serial chain -->
-    <link name="${prefix}base_link"/>
-    <link name="${prefix}base_link_inertia">
+    <link name="${prefix}base_link">
       <visual>
-        <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
+        <origin xyz="0 0 0" rpy="0 0 ${base_correction}"/>
         <geometry>
           <mesh filename="${base_visual_mesh}"/>
         </geometry>
@@ -88,7 +94,7 @@
         </material>
       </visual>
       <collision>
-        <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
+        <origin xyz="0 0 0" rpy="0 0 ${base_correction}"/>
         <geometry>
           <mesh filename="${base_collision_mesh}"/>
         </geometry>
@@ -278,20 +284,10 @@
     </link>
 
     <!-- joints: main serial chain -->
-    <joint name="${prefix}base_link-base_link_inertia" type="fixed">
-      <parent link="${prefix}base_link" />
-      <child link="${prefix}base_link_inertia" />
-      <!-- 'base_link' is REP-103 aligned (so X+ forward), while the internal
-           frames of the robot/controller have X+ pointing backwards.
-           Use the joint between 'base_link' and 'base_link_inertia' (a dummy
-           link/frame) to introduce the necessary rotation over Z (of pi rad).
-      -->
-      <origin xyz="0 0 0" rpy="0 0 ${pi}" />
-    </joint>
     <joint name="${prefix}shoulder_pan_joint" type="revolute">
-      <parent link="${prefix}base_link_inertia" />
+      <parent link="${prefix}base_link" />
       <child link="${prefix}shoulder_link" />
-      <origin xyz="${shoulder_x} ${shoulder_y} ${shoulder_z}" rpy="${shoulder_roll} ${shoulder_pitch} ${shoulder_yaw}" />
+      <origin xyz="${shoulder_x} ${shoulder_y} ${shoulder_z}" rpy="${shoulder_roll} ${shoulder_pitch} ${shoulder_yaw - base_correction}" />
       <axis xyz="0 0 1" />
       <limit lower="${shoulder_pan_lower_limit}" upper="${shoulder_pan_upper_limit}"
         effort="${shoulder_pan_effort_limit}" velocity="${shoulder_pan_velocity_limit}"/>
@@ -369,26 +365,38 @@
            to correctly align 'base' with the 'Base' coordinate system of
            the UR controller.
       -->
-      <origin xyz="0 0 0" rpy="0 0 ${pi}"/>
+      <origin xyz="0 0 0" rpy="0 0 ${base_correction}"/>
       <parent link="${prefix}base_link"/>
       <child link="${prefix}base"/>
     </joint>
 
-    <!-- ROS-Industrial 'flange' frame: attachment point for EEF models -->
-    <link name="${prefix}flange" />
-    <joint name="${prefix}wrist_3-flange" type="fixed">
-      <parent link="${prefix}wrist_3_link" />
-      <child link="${prefix}flange" />
-      <origin xyz="0 0 0" rpy="0 ${-pi/2.0} ${-pi/2.0}" />
-    </joint>
+    <!--
+      TODO(cj): See if we can keep the flange and tool0 links and their
+        corresponding joints.
+    -->
 
-    <!-- ROS-Industrial 'tool0' frame: all-zeros tool frame -->
-    <link name="${prefix}tool0"/>
-    <joint name="${prefix}flange-tool0" type="fixed">
-      <!-- default toolframe: X+ left, Y+ up, Z+ front -->
-      <origin xyz="0 0 0" rpy="${pi/2.0} 0 ${pi/2.0}"/>
-      <parent link="${prefix}flange"/>
-      <child link="${prefix}tool0"/>
-    </joint>
+    <!-- Configure self collision properties per link -->
+    <!-- TODO(cj): Have callers use the ur_robot_gazebo macro instead. -->
+    <gazebo reference="${prefix}shoulder_link">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="${prefix}upper_arm_link">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="${prefix}forearm_link">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="${prefix}wrist_1_link">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="${prefix}wrist_3_link">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="${prefix}wrist_2_link">
+      <selfCollide>true</selfCollide>
+    </gazebo>
+    <gazebo reference="${prefix}ee_link">
+      <selfCollide>true</selfCollide>
+    </gazebo>
   </xacro:macro>
 </robot>
