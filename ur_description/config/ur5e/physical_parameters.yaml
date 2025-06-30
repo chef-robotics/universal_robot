@@ -122,3 +122,44 @@ inertia_parameters:
       iyy: 9.890414008333333e-05
       iyz: 0
       izz: 0.0001321171875
+
+# Motor dynamics
+# Frictions derived from here: https://docs.google.com/spreadsheets/d/1l5ALgBcOG7bib8kCmkV5400Q8j62zNZdqExMIk1tpHg/edit?usp=sharing
+# Inertias derived from table IV in: https://www.cambridge.org/core/journals/robotica/article/electromechanical-modeling-and-identification-of-the-ur5-eseries-robot/1AE5BAE866D9046F79C4B159BEA2B45F?utm_campaign=shareaholic&utm_medium=copy_link&utm_source=bookmark
+motor_dynamics:
+  shoulder_pan_joint:
+    static_friction: 0.05113
+    viscous_friction: 0.038396875
+    gear_ratio: 101.0
+    rotor_inertia: 6.6119e-05
+    reducer_inertia: 10.7e-05
+  shoulder_lift_joint:
+    static_friction: 0.094925
+    viscous_friction: 0.0493984375
+    gear_ratio: 101.0
+    rotor_inertia: 4.6147e-05
+    reducer_inertia: 10.7e-05
+  elbow_joint:
+    static_friction: 0.07349
+    viscous_friction: 0.042971875
+    gear_ratio: 101.0
+    rotor_inertia: 7.9773e-05
+    reducer_inertia: 10.7e-05
+  wrist_1_joint:
+    static_friction: 0.01628
+    viscous_friction: 0.00835
+    gear_ratio: 101.0
+    rotor_inertia: 1.2249e-05
+    reducer_inertia: 0.91e-05
+  wrist_2_joint:
+    static_friction: 0.016135
+    viscous_friction: 0.0076140625
+    gear_ratio: 101.0
+    rotor_inertia: 1.1868e-05
+    reducer_inertia: 0.91e-05
+  wrist_3_joint:
+    static_friction: 0.020835
+    viscous_friction: 0.0080203125
+    gear_ratio: 101.0
+    rotor_inertia: 1.1981e-05
+    reducer_inertia: 0.91e-05
