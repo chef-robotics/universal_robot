@@ -122,3 +122,46 @@ inertia_parameters:
       iyy: 9.890414008333333e-05
       iyz: 0
       izz: 0.0001321171875
+
+# Joint dynamics -- loaded into the `chef_dynamics` element in URDF `joint` elements.
+# Frictions are in the joint/"output" reference frame, i.e. after the gear box, and are derived here:
+# https://docs.google.com/spreadsheets/d/1l5ALgBcOG7bib8kCmkV5400Q8j62zNZdqExMIk1tpHg/edit?usp=sharing
+# Inertias are in the motor reference frame, i.e. before the gear box, and are derived from table IV in:
+# https://www.cambridge.org/core/journals/robotica/article/electromechanical-modeling-and-identification-of-the-ur5-eseries-robot/1AE5BAE866D9046F79C4B159BEA2B45F?utm_campaign=shareaholic&utm_medium=copy_link&utm_source=bookmark
+joint_dynamics:
+  shoulder_pan_joint:
+    coulomb_friction: 0.05113  # Nm
+    viscous_damping: 0.038396875  # Nm*s/rad
+    gear_ratio: 101.0
+    rotor_inertia: 6.6119e-05  # kg*m^2
+    reducer_inertia: 10.7e-05  # kg*m^2
+  shoulder_lift_joint:
+    coulomb_friction: 0.094925
+    viscous_damping: 0.0493984375
+    gear_ratio: 101.0
+    rotor_inertia: 4.6147e-05
+    reducer_inertia: 10.7e-05
+  elbow_joint:
+    coulomb_friction: 0.07349
+    viscous_damping: 0.042971875
+    gear_ratio: 101.0
+    rotor_inertia: 7.9773e-05
+    reducer_inertia: 10.7e-05
+  wrist_1_joint:
+    coulomb_friction: 0.01628
+    viscous_damping: 0.00835
+    gear_ratio: 101.0
+    rotor_inertia: 1.2249e-05
+    reducer_inertia: 0.91e-05
+  wrist_2_joint:
+    coulomb_friction: 0.016135
+    viscous_damping: 0.0076140625
+    gear_ratio: 101.0
+    rotor_inertia: 1.1868e-05
+    reducer_inertia: 0.91e-05
+  wrist_3_joint:
+    coulomb_friction: 0.020835
+    viscous_damping: 0.0080203125
+    gear_ratio: 101.0
+    rotor_inertia: 1.1981e-05
+    reducer_inertia: 0.91e-05
