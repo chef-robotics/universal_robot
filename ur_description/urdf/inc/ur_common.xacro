@@ -38,7 +38,7 @@
     <xacro:property name="sec_limits" value="${config_joint_limit_parameters['joint_limits']}"/>
     <xacro:property name="sec_offsets" value="${config_physical_parameters['offsets']}"/>
     <xacro:property name="sec_inertia_parameters" value="${config_physical_parameters['inertia_parameters']}" />
-    <xacro:property name="sec_motor_dynamics" value="${config_physical_parameters['motor_dynamics']}" />
+    <xacro:property name="sec_joint_dynamics" value="${config_physical_parameters['joint_dynamics']}" />
     <xacro:property name="sec_mesh_files" value="${config_visual_parameters['mesh_files']}" />
     <xacro:property name="sec_kinematics" value="${config_kinematics_parameters['kinematics']}" />
 
@@ -68,42 +68,42 @@
     <xacro:property name="wrist_3_velocity_limit" value="${sec_limits['wrist_3_joint']['max_velocity']}" scope="parent"/>
     <xacro:property name="wrist_3_effort_limit" value="${sec_limits['wrist_3_joint']['max_effort']}" scope="parent"/>
 
-    <!-- MOTOR DYNAMICS PARAMETERS -->
-    <xacro:property name="shoulder_pan_joint_static_friction" value="${sec_motor_dynamics['shoulder_pan_joint']['static_friction']}" scope="parent"/>
-    <xacro:property name="shoulder_pan_joint_viscous_friction" value="${sec_motor_dynamics['shoulder_pan_joint']['viscous_friction']}" scope="parent"/>
-    <xacro:property name="shoulder_pan_joint_gear_ratio" value="${sec_motor_dynamics['shoulder_pan_joint']['gear_ratio']}" scope="parent"/>
-    <xacro:property name="shoulder_pan_joint_rotor_inertia" value="${sec_motor_dynamics['shoulder_pan_joint']['rotor_inertia']}" scope="parent"/>
-    <xacro:property name="shoulder_pan_joint_reducer_inertia" value="${sec_motor_dynamics['shoulder_pan_joint']['reducer_inertia']}" scope="parent"/>
+    <!-- JOINT DYNAMICS PARAMETERS -->
+    <xacro:property name="shoulder_pan_joint_coulomb_friction" value="${sec_joint_dynamics['shoulder_pan_joint']['coulomb_friction']}" scope="parent"/>
+    <xacro:property name="shoulder_pan_joint_viscous_damping" value="${sec_joint_dynamics['shoulder_pan_joint']['viscous_damping']}" scope="parent"/>
+    <xacro:property name="shoulder_pan_joint_gear_ratio" value="${sec_joint_dynamics['shoulder_pan_joint']['gear_ratio']}" scope="parent"/>
+    <xacro:property name="shoulder_pan_joint_rotor_inertia" value="${sec_joint_dynamics['shoulder_pan_joint']['rotor_inertia']}" scope="parent"/>
+    <xacro:property name="shoulder_pan_joint_reducer_inertia" value="${sec_joint_dynamics['shoulder_pan_joint']['reducer_inertia']}" scope="parent"/>
 
-    <xacro:property name="shoulder_lift_joint_static_friction" value="${sec_motor_dynamics['shoulder_lift_joint']['static_friction']}" scope="parent"/>
-    <xacro:property name="shoulder_lift_joint_viscous_friction" value="${sec_motor_dynamics['shoulder_lift_joint']['viscous_friction']}" scope="parent"/>
-    <xacro:property name="shoulder_lift_joint_gear_ratio" value="${sec_motor_dynamics['shoulder_lift_joint']['gear_ratio']}" scope="parent"/>
-    <xacro:property name="shoulder_lift_joint_rotor_inertia" value="${sec_motor_dynamics['shoulder_lift_joint']['rotor_inertia']}" scope="parent"/>
-    <xacro:property name="shoulder_lift_joint_reducer_inertia" value="${sec_motor_dynamics['shoulder_lift_joint']['reducer_inertia']}" scope="parent"/>
+    <xacro:property name="shoulder_lift_joint_coulomb_friction" value="${sec_joint_dynamics['shoulder_lift_joint']['coulomb_friction']}" scope="parent"/>
+    <xacro:property name="shoulder_lift_joint_viscous_damping" value="${sec_joint_dynamics['shoulder_lift_joint']['viscous_damping']}" scope="parent"/>
+    <xacro:property name="shoulder_lift_joint_gear_ratio" value="${sec_joint_dynamics['shoulder_lift_joint']['gear_ratio']}" scope="parent"/>
+    <xacro:property name="shoulder_lift_joint_rotor_inertia" value="${sec_joint_dynamics['shoulder_lift_joint']['rotor_inertia']}" scope="parent"/>
+    <xacro:property name="shoulder_lift_joint_reducer_inertia" value="${sec_joint_dynamics['shoulder_lift_joint']['reducer_inertia']}" scope="parent"/>
 
-    <xacro:property name="elbow_joint_static_friction" value="${sec_motor_dynamics['elbow_joint']['static_friction']}" scope="parent"/>
-    <xacro:property name="elbow_joint_viscous_friction" value="${sec_motor_dynamics['elbow_joint']['viscous_friction']}" scope="parent"/>
-    <xacro:property name="elbow_joint_gear_ratio" value="${sec_motor_dynamics['elbow_joint']['gear_ratio']}" scope="parent"/>
-    <xacro:property name="elbow_joint_rotor_inertia" value="${sec_motor_dynamics['elbow_joint']['rotor_inertia']}" scope="parent"/>
-    <xacro:property name="elbow_joint_reducer_inertia" value="${sec_motor_dynamics['elbow_joint']['reducer_inertia']}" scope="parent"/>
+    <xacro:property name="elbow_joint_coulomb_friction" value="${sec_joint_dynamics['elbow_joint']['coulomb_friction']}" scope="parent"/>
+    <xacro:property name="elbow_joint_viscous_damping" value="${sec_joint_dynamics['elbow_joint']['viscous_damping']}" scope="parent"/>
+    <xacro:property name="elbow_joint_gear_ratio" value="${sec_joint_dynamics['elbow_joint']['gear_ratio']}" scope="parent"/>
+    <xacro:property name="elbow_joint_rotor_inertia" value="${sec_joint_dynamics['elbow_joint']['rotor_inertia']}" scope="parent"/>
+    <xacro:property name="elbow_joint_reducer_inertia" value="${sec_joint_dynamics['elbow_joint']['reducer_inertia']}" scope="parent"/>
 
-    <xacro:property name="wrist_1_joint_static_friction" value="${sec_motor_dynamics['wrist_1_joint']['static_friction']}" scope="parent"/>
-    <xacro:property name="wrist_1_joint_viscous_friction" value="${sec_motor_dynamics['wrist_1_joint']['viscous_friction']}" scope="parent"/>
-    <xacro:property name="wrist_1_joint_gear_ratio" value="${sec_motor_dynamics['wrist_1_joint']['gear_ratio']}" scope="parent"/>
-    <xacro:property name="wrist_1_joint_rotor_inertia" value="${sec_motor_dynamics['wrist_1_joint']['rotor_inertia']}" scope="parent"/>
-    <xacro:property name="wrist_1_joint_reducer_inertia" value="${sec_motor_dynamics['wrist_1_joint']['reducer_inertia']}" scope="parent"/>
+    <xacro:property name="wrist_1_joint_coulomb_friction" value="${sec_joint_dynamics['wrist_1_joint']['coulomb_friction']}" scope="parent"/>
+    <xacro:property name="wrist_1_joint_viscous_damping" value="${sec_joint_dynamics['wrist_1_joint']['viscous_damping']}" scope="parent"/>
+    <xacro:property name="wrist_1_joint_gear_ratio" value="${sec_joint_dynamics['wrist_1_joint']['gear_ratio']}" scope="parent"/>
+    <xacro:property name="wrist_1_joint_rotor_inertia" value="${sec_joint_dynamics['wrist_1_joint']['rotor_inertia']}" scope="parent"/>
+    <xacro:property name="wrist_1_joint_reducer_inertia" value="${sec_joint_dynamics['wrist_1_joint']['reducer_inertia']}" scope="parent"/>
 
-    <xacro:property name="wrist_2_joint_static_friction" value="${sec_motor_dynamics['wrist_2_joint']['static_friction']}" scope="parent"/>
-    <xacro:property name="wrist_2_joint_viscous_friction" value="${sec_motor_dynamics['wrist_2_joint']['viscous_friction']}" scope="parent"/>
-    <xacro:property name="wrist_2_joint_gear_ratio" value="${sec_motor_dynamics['wrist_2_joint']['gear_ratio']}" scope="parent"/>
-    <xacro:property name="wrist_2_joint_rotor_inertia" value="${sec_motor_dynamics['wrist_2_joint']['rotor_inertia']}" scope="parent"/>
-    <xacro:property name="wrist_2_joint_reducer_inertia" value="${sec_motor_dynamics['wrist_2_joint']['reducer_inertia']}" scope="parent"/>
+    <xacro:property name="wrist_2_joint_coulomb_friction" value="${sec_joint_dynamics['wrist_2_joint']['coulomb_friction']}" scope="parent"/>
+    <xacro:property name="wrist_2_joint_viscous_damping" value="${sec_joint_dynamics['wrist_2_joint']['viscous_damping']}" scope="parent"/>
+    <xacro:property name="wrist_2_joint_gear_ratio" value="${sec_joint_dynamics['wrist_2_joint']['gear_ratio']}" scope="parent"/>
+    <xacro:property name="wrist_2_joint_rotor_inertia" value="${sec_joint_dynamics['wrist_2_joint']['rotor_inertia']}" scope="parent"/>
+    <xacro:property name="wrist_2_joint_reducer_inertia" value="${sec_joint_dynamics['wrist_2_joint']['reducer_inertia']}" scope="parent"/>
 
-    <xacro:property name="wrist_3_joint_static_friction" value="${sec_motor_dynamics['wrist_3_joint']['static_friction']}" scope="parent"/>
-    <xacro:property name="wrist_3_joint_viscous_friction" value="${sec_motor_dynamics['wrist_3_joint']['viscous_friction']}" scope="parent"/>
-    <xacro:property name="wrist_3_joint_gear_ratio" value="${sec_motor_dynamics['wrist_3_joint']['gear_ratio']}" scope="parent"/>
-    <xacro:property name="wrist_3_joint_rotor_inertia" value="${sec_motor_dynamics['wrist_3_joint']['rotor_inertia']}" scope="parent"/>
-    <xacro:property name="wrist_3_joint_reducer_inertia" value="${sec_motor_dynamics['wrist_3_joint']['reducer_inertia']}" scope="parent"/>
+    <xacro:property name="wrist_3_joint_coulomb_friction" value="${sec_joint_dynamics['wrist_3_joint']['coulomb_friction']}" scope="parent"/>
+    <xacro:property name="wrist_3_joint_viscous_damping" value="${sec_joint_dynamics['wrist_3_joint']['viscous_damping']}" scope="parent"/>
+    <xacro:property name="wrist_3_joint_gear_ratio" value="${sec_joint_dynamics['wrist_3_joint']['gear_ratio']}" scope="parent"/>
+    <xacro:property name="wrist_3_joint_rotor_inertia" value="${sec_joint_dynamics['wrist_3_joint']['rotor_inertia']}" scope="parent"/>
+    <xacro:property name="wrist_3_joint_reducer_inertia" value="${sec_joint_dynamics['wrist_3_joint']['reducer_inertia']}" scope="parent"/>
 
     <!-- kinematics -->
     <xacro:property name="shoulder_x" value="${sec_kinematics['shoulder']['x']}" scope="parent"/>
